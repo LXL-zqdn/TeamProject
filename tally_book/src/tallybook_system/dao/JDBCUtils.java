@@ -24,7 +24,7 @@ public class JDBCUtils {
         // 实例化Properties对象
         Properties properties = new Properties();
         // 加载properties配置文件
-        properties.load(new FileInputStream(new File("src\\tallybook_system\\properties\\db.properties")));
+        properties.load(new FileInputStream(new File("tally_book\\src\\tallybook_system\\properties\\db.properties")));
         // 通过键名获取对应的值
         String driverName = properties.get("driverName").toString();
         String url = properties.get("url").toString();
