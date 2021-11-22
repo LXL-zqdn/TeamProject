@@ -1,5 +1,7 @@
 package tallybook_system;
 
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import tallybook_system.controller.LogupFrameController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -50,8 +52,38 @@ public class MainApp extends Application {
         }
         return null;
     }
+    /**
+     * 操作结果：主操作界面
+     */
+    public Scene initMainFrame() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/mainPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("管家婆系统");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+            // 加载CSS样式文件
+           // scene.getStylesheets().add(MainApp.class.getResource(getStyleValue()).toExternalForm());
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         launch(args);
     }
 
 }
+
+

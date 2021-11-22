@@ -83,7 +83,7 @@ public class LogupFrameController {
                     // 关闭登录界面
                     logupStage.close();
                     // 打开主窗口
-                    //new MainApp().initMainFrame();
+                    new MainApp().initMainFrame();
                 }
             } else {
                 SimpleTools.informationDialog(Alert.AlertType.ERROR, "错误", "错误", "用户名或密码错误！");
