@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/cloud-mysql-connector-java-5.1.7-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-3.10-FINAL-20140208.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-examples-3.10-FINAL-20140208.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-excelant-3.10-FINAL-20140208.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-ooxml-3.10-FINAL-20140208.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-ooxml-schemas-3.10-FINAL-20140208.jar!/" />
+          <root url="jar://$MODULE_DIR$/../管家婆记账系统/file/jar/poi-scratchpad-3.10-FINAL-20140208.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="mssql-jdbc-6.4.0.jre8" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/resource/jar/mssql-jdbc-6.4.0.jre8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
