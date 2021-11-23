@@ -80,6 +80,34 @@ public class MainApp extends Application {
         }
         return null;
     }
+
+    /**
+     * 操作结果：“报告”查询结果界面
+     */
+    public Scene initReportFrame() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/reportFrame.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("报告");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+            // 加载CSS样式文件
+            //scene.getStylesheets().add(MainApp.class.getResource(getStyleValue()).toExternalForm());
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         launch(args);
     }

@@ -291,7 +291,8 @@ public class MainPageController {
      */
     @FXML
     public void reportMenuItemEvent(ActionEvent event) {
-
+        // 打开报告界面
+        mainApp.initReportFrame();
     }
 
     /**
