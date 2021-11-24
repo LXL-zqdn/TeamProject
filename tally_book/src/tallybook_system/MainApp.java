@@ -3,6 +3,8 @@ package tallybook_system;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
+import tallybook_system.bean.TableData;
+import tallybook_system.controller.AlterAccountFrameController;
 import tallybook_system.controller.LogupFrameController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -103,6 +105,58 @@ public class MainApp extends Application {
         }
         return null;
     }
+
+    /**
+     * 操作结果：删除账目界面
+     */
+    public Scene initDeleteFrame() {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("view/deleteAccountFrame.fxml"));
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("删除账目");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+            mainFrameStage.show();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 操作结果：更改账目界面
+     */
+    public Scene initAlterFrame(TableData tableData, boolean isContextMenu) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/alterAccountFrame.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("更改账目");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     /**
      * 操作结果：“报告”查询结果界面
      */

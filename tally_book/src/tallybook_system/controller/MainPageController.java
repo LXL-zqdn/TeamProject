@@ -233,7 +233,8 @@ public class MainPageController {
      */
     @FXML
     public void deleteMenuItemEvent(ActionEvent actionEvent) {
-
+        mainApp.initDeleteFrame();//调用删除界面
+        initialize();
     }
 
     /**
@@ -243,7 +244,10 @@ public class MainPageController {
      */
     @FXML
     public void alterMenuItemEvent(ActionEvent actionEvent) {
-
+        // 刷新数据
+        initialize();
+        // 调用修改界面控制器
+        mainApp.initAlterFrame(null, false);
     }
 
     /**
