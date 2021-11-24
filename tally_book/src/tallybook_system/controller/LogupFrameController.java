@@ -47,7 +47,7 @@ public class LogupFrameController {
             // 实例化UserDao对象
             UserDao userDao = new UserDao();
             // 封装用户输入的数据到User实体类
-            User user = new User(nameTextField.getText(), SimpleTools.MD5(passwordTextField.getText()), "src\\AccountSystem\\images\\panda.png");
+            User user = new User(nameTextField.getText(), SimpleTools.MD5(passwordTextField.getText()), "tally_book\\src\\tallybook_system\\images\\girl.jpg");
             // 注册用户，并返回注册结果
             boolean isLoginSuccess = userDao.register(user);
             // 对注册结果进行反馈

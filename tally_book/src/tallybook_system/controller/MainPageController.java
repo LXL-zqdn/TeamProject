@@ -1,9 +1,11 @@
 package tallybook_system.controller;
 
+import javafx.stage.FileChooser;
 import tallybook_system.MainApp;
 import tallybook_system.bean.Session;
 import tallybook_system.bean.TableData;
 import tallybook_system.bean.User;
+import tallybook_system.dao.JDBCUtils;
 import tallybook_system.dao.RecordDao;
 import tallybook_system.dao.UserDao;
 import tallybook_system.tools.DateTools;
@@ -17,7 +19,9 @@ import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -131,8 +135,34 @@ public class MainPageController {
      * @param actionEvent 事件
      */
     @FXML
-    public void backupMenuItemEvent(ActionEvent actionEvent) {
-
+    public void backupMenuItemEvent(ActionEvent actionEvent)throws IOException {
+        //实例化文件选择器
+        FileChooser fileChooser = new FileChooser();
+        //设置打开文件选择框默认输入的文件名
+        fileChooser.setInitialFileName("Database_Backup_" + dateTools.dateFormat(new Date(), "yyyy-MM-dd") + ".sql");
+        //打开文件选择框
+        File result = fileChooser.showSaveDialog(null);
+        if (result != null) {
+            String savePath = result.getAbsolutePath();
+            // 实例化Properties对象
+            Properties properties = new Properties();
+            // 加载properties配置文件
+            FileInputStream fis = new FileInputStream(new File("tally_book\\src\\tallybook_system\\properties\\db.properties"));
+            properties.load(fis);
+            // 通过键名获取对应的值
+            String databaseName = properties.get("databaseName").toString();
+            String user = properties.get("user").toString();
+            String password = properties.get("password").toString();
+            // 调用备份方法需要提供MySQL的用户名、密码和数据库名，这些数据从properties文件中读取
+            boolean b = JDBCUtils.backup(user, password, savePath, databaseName);
+            if (b) {
+                SimpleTools.informationDialog(Alert.AlertType.INFORMATION, "提示", "信息", "备份数据库成功！");
+            } else {
+                SimpleTools.informationDialog(Alert.AlertType.ERROR, "提示", "错误", "备份数据库失败！");
+            }
+            // 关闭流
+            fis.close();
+        }
     }
 
     /**
@@ -141,8 +171,36 @@ public class MainPageController {
      * @param actionEvent 事件
      */
     @FXML
-    public void recoverMenuItemEvent(ActionEvent actionEvent) {
-
+    public void recoverMenuItemEvent(ActionEvent actionEvent) throws IOException {
+        //实例化文件选择器
+        FileChooser fileChooser = new FileChooser();
+        //设置默认文件过滤器
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("sql(*.sql)", "sql"));
+        //打开文件选择框
+        File result = fileChooser.showOpenDialog(null);
+        if (result != null) {
+            // 恢复文件的路径
+            String recoverPath = result.getAbsolutePath();
+            // 实例化Properties对象
+            Properties properties = new Properties();
+            // 加载properties配置文件
+            FileInputStream fis = new FileInputStream(new File("src\\AccountSystem\\properties\\db.properties"));
+            properties.load(fis);
+            // 通过键名获取对应的值
+            String databaseName = properties.get("databaseName").toString();
+            String user = properties.get("user").toString();
+            String password = properties.get("password").toString();
+            boolean b = JDBCUtils.recover(user, password, databaseName, recoverPath);
+            if (b) {
+                // 刷新界面显示的数据
+                initialize();
+                SimpleTools.informationDialog(Alert.AlertType.INFORMATION, "提示", "信息", "数据库恢复成功！");
+            } else {
+                SimpleTools.informationDialog(Alert.AlertType.ERROR, "提示", "错误", "数据库恢复失败！");
+            }
+            // 关闭流
+            fis.close();
+        }
     }
 
     /**
@@ -152,7 +210,7 @@ public class MainPageController {
      */
     @FXML
     public void exitMenuItemEvent(ActionEvent actionEvent) {
-
+        System.exit(0);
     }
 
     /**
@@ -162,7 +220,10 @@ public class MainPageController {
      */
     @FXML
     public void addMenuItemEvent(ActionEvent actionEvent) {
-
+        // 刷新界面数据
+        initialize();
+        // 调用添加账目界面
+        mainApp.initAddFrame();
     }
 
     /**

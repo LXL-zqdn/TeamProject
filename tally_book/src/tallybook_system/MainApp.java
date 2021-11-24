@@ -1,5 +1,6 @@
 package tallybook_system;
 
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import tallybook_system.controller.LogupFrameController;
@@ -62,7 +63,7 @@ public class MainApp extends Application {
             AnchorPane page = (AnchorPane) loader.load();
 
             Stage mainFrameStage = new Stage();
-            mainFrameStage.setTitle("管家婆系统");
+            mainFrameStage.setTitle("简易记账管理系统");
             mainFrameStage.setResizable(true);
             mainFrameStage.setAlwaysOnTop(false);
             mainFrameStage.initModality(Modality.APPLICATION_MODAL);
@@ -80,7 +81,28 @@ public class MainApp extends Application {
         }
         return null;
     }
+    /**
+     * 操作结果：添加账目界面
+     */
+    public Scene initAddFrame() {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("view/addAccountFrame.fxml"));
 
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("添加账目");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+            mainFrameStage.show();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     /**
      * 操作结果：“报告”查询结果界面
      */
@@ -98,8 +120,7 @@ public class MainApp extends Application {
             mainFrameStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             mainFrameStage.setScene(scene);
-            // 加载CSS样式文件
-            //scene.getStylesheets().add(MainApp.class.getResource(getStyleValue()).toExternalForm());
+
 
             mainFrameStage.showAndWait();
             return scene;

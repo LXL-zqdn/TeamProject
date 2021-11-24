@@ -24,7 +24,7 @@
                                                 <Cursor fx:constant="HAND"/>
                                             </cursor>
                                             <image>
-                                                <Image url="@../images/panda.png"/>
+                                                <Image url="@../images/girl.jpg"/>
                                             </image>
                                         </ImageView>
                                     </children>
