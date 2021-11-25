@@ -231,6 +231,10 @@ public class MainPageController {
      */
     @FXML
     public void checkMenuItemEvent(ActionEvent actionEvent) {
+        // 打开查询界面
+        mainApp.initTableView();
+        initialize();
+
 
     }
 

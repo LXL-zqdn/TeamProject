@@ -108,6 +108,31 @@ public class MainApp extends Application {
         }
         return null;
     }
+    /**
+     * 操作结果：查看数据表格界面
+     */
+    public Scene initTableView() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/tableView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("查询结果");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         launch(args);
     }
