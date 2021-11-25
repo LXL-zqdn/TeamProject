@@ -365,6 +365,14 @@ public class MainPageController {
      */
     @FXML
     public void dateCheckMenuItemEvent(ActionEvent event) {
+        /**
+         * ”按日期查询“菜单项的事件监听器
+         *
+         * @param event 事件
+         */
+            // 打开按日期查询界面
+            mainApp.initDateCheckTableView();
+
 
     }
 
@@ -375,6 +383,9 @@ public class MainPageController {
      */
     @FXML
     public void classificationCheckMenuItemEvent(ActionEvent event) {
+        // 打开按分类查询界面
+        mainApp.initClassificationTableView();
+
 
     }
 
@@ -385,6 +396,8 @@ public class MainPageController {
      */
     @FXML
     public void memoCheckMenuItemEvent(ActionEvent event) {
+        // 打开按备注查询界面
+        mainApp.initMemoTableView();
 
     }
 
