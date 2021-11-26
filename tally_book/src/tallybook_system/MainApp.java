@@ -183,6 +183,101 @@ public class MainApp extends Application {
         }
         return null;
     }
+    /**
+     * 操作结果：查看数据表格界面
+     */
+    public Scene initTableView() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/tableView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("查询结果");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * 操作结果：”按日期查询“结果界面
+     */
+    public Scene initDateCheckTableView() {
+        try {
+
+            Parent page = FXMLLoader.load(getClass().getResource("view/dateCheckFrame.fxml"));
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("按日期查询");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * 操作结果：”按分类查询“结果界面
+     */
+    public Scene initClassificationTableView() {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("view/classificationCheckFrame.fxml"));
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("按分类查询");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * 操作结果：”按备注查询“结果界面
+     */
+    public Scene initMemoTableView() {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("view/memoCheckFrame.fxml"));
+
+            Stage mainFrameStage = new Stage();
+            mainFrameStage.setTitle("按备注查询");
+            mainFrameStage.setResizable(true);
+            mainFrameStage.setAlwaysOnTop(false);
+            mainFrameStage.initModality(Modality.APPLICATION_MODAL);
+            mainFrameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            mainFrameStage.setScene(scene);
+
+            mainFrameStage.showAndWait();
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
         launch(args);
     }
