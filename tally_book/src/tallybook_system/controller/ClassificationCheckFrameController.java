@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 按分类条件查询界面控制器
  *
- * @author lck100
+ * @author ZFX
  */
 public class ClassificationCheckFrameController {
     private PublicTools publicTools = new PublicTools();

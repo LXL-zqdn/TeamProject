@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 /**
  * 查询界面控制器
  *
- * @author lck100
+ * @author ZFX
  */
 public class TableViewController {
     private PublicTools publicTools = new PublicTools();

@@ -47,10 +47,9 @@ import java.util.List;
         private ComboBox<?> classificationComboBox;
 
          /**
-         * “添加”按钮的事件监听器
-         *
-         * @param actionEvent 事件
-         */
+         * “添加”按钮的事件监听器
+         * @param actionEvent 事件
+          */
          public void addButtonEvent(ActionEvent actionEvent) {
              // 类型
              String type = selectedRadioButton;
@@ -82,12 +81,11 @@ import java.util.List;
                  SimpleTools.informationDialog(Alert.AlertType.ERROR, "提示", "错误", "添加账目失败！");
              }
          }
-
-        /**
-        * “支出”单选按钮的事件监听器
-        *
-        * @param actionEvent 事件
-        */
+         /**
+        * “支出”单选按钮的事件监听器
+        *
+        * @param actionEvent 事件
+        */
         public void outputRadioButtonEvent(ActionEvent actionEvent) {
             // 获取支出分类的所有信息
             List<Classification> classificationList = new ClassificationDao().selectByType("支出");
@@ -106,10 +104,9 @@ import java.util.List;
         }
 
         /**
-        * “收入”单选按钮的事件监听器
-        *
-        * @param actionEvent 事件
-        */
+        * “收入”单选按钮的事件监听器
+        * @param actionEvent 事件
+        */
         public void inputRadioButtonEvent(ActionEvent actionEvent) {
             // 获取收入分类的所有信息
             List<Classification> classificationList = new ClassificationDao().selectByType("收入");
@@ -128,10 +125,10 @@ import java.util.List;
         }
 
         /**
-        * ”分类“下拉列表框的事件监听器
-        *
-        * @param actionEvent 事件
-        */
+     * ”分类“下拉列表框的事件监听器
+     *
+     * @param actionEvent 事件
+     */
         public void classificationComboBoxEvent(ActionEvent actionEvent) {
             //只处理选中的状态
             selectedCoboboxItem = (String) classificationComboBox.getSelectionModel().selectedItemProperty().getValue();

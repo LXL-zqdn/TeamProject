@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 /**
  * 删除账目界面控制器
  *
- * @author lck100
+ * @author LXL
  */
 public class DeleteAccountFrameController {
     @FXML
