@@ -1,5 +1,8 @@
 package tallybook_system.controller;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import tallybook_system.MainApp;
 import tallybook_system.bean.Session;
@@ -17,10 +20,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
@@ -28,7 +34,7 @@ import java.util.Properties;
 /**
  * 主界面控制器
  *
- * @author lck100
+ * @author GHY LXL ＹＦ　ZFX
  */
 public class MainPageController {
 
@@ -106,7 +112,7 @@ public class MainPageController {
         // 初始化表格数据
         initAddDataToTableView();
         // 初始化程序主题皮肤选择
-       // initThemeRadioMenuItem();
+        initThemeRadioMenuItem();
     }
 
     /**
@@ -310,6 +316,8 @@ public class MainPageController {
      */
     @FXML
     public void barChartMenuItemEvent(ActionEvent actionEvent) {
+        // 打开条形图界面
+        mainApp.initBarChart();
 
     }
 
@@ -320,7 +328,8 @@ public class MainPageController {
      */
     @FXML
     public void lineChartMenuItemEvent(ActionEvent actionEvent) {
-
+        // 打开折线图界面
+        mainApp.initLineChart();
     }
 
     /**
@@ -330,7 +339,8 @@ public class MainPageController {
      */
     @FXML
     public void pieChartMenuItemEvent(ActionEvent actionEvent) {
-
+        // 打开饼图界面
+        mainApp.initPieChart();
     }
 
     /**
@@ -340,6 +350,8 @@ public class MainPageController {
      */
     @FXML
     public void addClassificationMenuItemEvent(ActionEvent actionEvent) {
+        // 打开添加分类界面
+        mainApp.initAddClassificationFrame();
 
     }
 
@@ -350,6 +362,10 @@ public class MainPageController {
      */
     @FXML
     public void userInfoMenuItemEvent(ActionEvent actionEvent) {
+        // 打开用户信息界面
+        mainApp.initUserInformationFrame();
+        // 刷新主界面
+        initialize();
 
     }
 
@@ -371,7 +387,8 @@ public class MainPageController {
      */
     @FXML
     public void abutSoftMenuItemEvent(ActionEvent actionEvent) {
-
+        // 打开关于软件界面
+        mainApp.initSoftInformationFrame();
     }
 
     /**
@@ -380,7 +397,8 @@ public class MainPageController {
      * @param actionEvent 事件
      */
     @FXML
-    public void helpMenuItemEvent(ActionEvent actionEvent) {
+    public void helpMenuItemEvent(ActionEvent actionEvent) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://github.com/LXL-zqdn/TeamProject"));
 
     }
     /**
@@ -471,8 +489,22 @@ public class MainPageController {
      *
      * @param event 事件
      */
-    public void defaultRadioMenuItemEvent(ActionEvent event) {
-
+    public void defaultRadioMenuItemEvent(ActionEvent event) throws IOException {
+        File file = new File("src\\AccountSystem\\properties\\styles.properties");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        // 实例化Properties对象
+        Properties properties = new Properties();
+        // 写入默认属性
+        properties.setProperty("default", "");
+        // 文件输出流
+        FileOutputStream fos = new FileOutputStream(file);
+        // 向properties文件中写入信息，有两个参数：第一个参数是文件输出流，第二个参数是properties文件注释
+        properties.store(fos, "默认");
+        SimpleTools.informationDialog(Alert.AlertType.INFORMATION,"信息","信息","切换默认皮肤成功，请重启软件使用新皮肤。");
+        // 关闭流
+        fos.close();
     }
 
     /**
@@ -480,8 +512,22 @@ public class MainPageController {
      *
      * @param event 事件
      */
-    public void blackRadioMenuItemEvent(ActionEvent event) {
-
+    public void blackRadioMenuItemEvent(ActionEvent event) throws IOException {
+        File file = new File("src\\AccountSystem\\properties\\styles.properties");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        // 实例化Properties对象
+        Properties properties = new Properties();
+        // 写入经典黑属性
+        properties.setProperty("black", "styles/BlackStyle.css");
+        // 文件输出流
+        FileOutputStream fos = new FileOutputStream(file);
+        // 向properties文件中写入信息，有两个参数：第一个参数是文件输出流，第二个参数是properties文件注释
+        properties.store(fos, "经典黑");
+        SimpleTools.informationDialog(Alert.AlertType.INFORMATION,"信息","信息","切换经典黑皮肤成功，请重启软件使用新皮肤。");
+        // 关闭流
+        fos.close();
     }
 
     /**
@@ -489,7 +535,46 @@ public class MainPageController {
      *
      * @param event 事件
      */
-    public void whiteRadioMenuItemEvent(ActionEvent event) {
-
+    public void whiteRadioMenuItemEvent(ActionEvent event) throws IOException {
+        File file = new File("src\\AccountSystem\\properties\\styles.properties");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        // 实例化Properties对象
+        Properties properties = new Properties();
+        // 写入优雅白属性
+        properties.setProperty("white", "styles/WhiteStyle.css");
+        // 文件输出流
+        FileOutputStream fos = new FileOutputStream(file);
+        // 向properties文件中写入信息，有两个参数：第一个参数是文件输出流，第二个参数是properties文件注释
+        properties.store(fos, "优雅白");
+        SimpleTools.informationDialog(Alert.AlertType.INFORMATION,"信息","信息","切换优雅白皮肤成功，请重启软件使用新皮肤。");
+        // 关闭流
+        fos.close();
+    }
+    /**
+     * 操作结果：初始主题皮肤菜单项单选框被选中情况
+     */
+    public void initThemeRadioMenuItem() {
+        String key = "";
+        try {
+            Properties properties = new Properties();
+            FileInputStream fis = new FileInputStream(new File("src\\AccountSystem\\properties\\styles.properties"));
+            properties.load(fis);
+            Iterator<String> iterator = properties.stringPropertyNames().iterator();
+            while (iterator.hasNext()) {
+                key = iterator.next();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 判断properties文件key的值
+        if (key.equals("black")) {
+            blackRadioMenuItem.setSelected(true);
+        } else if (key.equals("white")) {
+            whiteRadioMenuItem.setSelected(true);
+        } else {
+            defaultRadioMenuItem.setSelected(true);
+        }
     }
 }

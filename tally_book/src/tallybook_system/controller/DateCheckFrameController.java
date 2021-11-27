@@ -13,7 +13,7 @@ import tallybook_system.bean.TableData;
 /**
  * 按日期查询界面控制器
  *
- * @author lck100
+ * @author ZFX
  */
 public class DateCheckFrameController {
     private PublicTools publicTools = new PublicTools();

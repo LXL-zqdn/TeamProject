@@ -15,7 +15,7 @@ import tallybook_system.tools.SimpleTools;
 /**
  * 登录控制器
  *
- * @author lck100
+ * @author YF
  */
 public class LogupFrameController {
     private Stage logupStage;

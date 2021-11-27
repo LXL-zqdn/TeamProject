@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 /**
  * 更改账目界面控制器
  *
- * @author lck100
+ * @author LXL
  */
 public class AlterAccountFrameController {
     private PublicTools publicTools = new PublicTools();
